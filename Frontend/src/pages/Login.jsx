@@ -1,19 +1,52 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+  const [user,setUser] = useState({
+    email:"",
+    password:""
+  });
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setUser((prev)=>({
+      ...prev,
+      [name]:value
+    }))
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try{
+      const response = await fetch('http://localhost:5000/login',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(user)
+      });
+      if(response.ok){
+        navigate('/allblogs');
+      }
+    }catch(err){
+      console.error('Invalid Credentials',err);
+    }
+  }
+
   return (
     <div className="signin-container">
-      <form className="signin-form">
-        <h1>Sign In</h1>
+      <form className="signin-form" onSubmit={handleSubmit}>
+        <h1>Sign-In</h1>
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
+            name='email'
             placeholder="Enter your email"
             required
+            onChange={handleChange}
           />
         </div>
         <div className="form-group">
@@ -21,8 +54,10 @@ function Login() {
           <input
             type="password"
             id="password"
+            name='password'
             placeholder="Enter your password"
             required
+            onChange={handleChange}
           />
         </div>
         <button type="submit" className="signin-btn">
