@@ -1,0 +1,24 @@
+*{
+    list-style: none;
+    text-decoration: none;
+}
+.profile{
+    font-weight: bolder;
+    margin-right: 25%;
+}
+.Navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: .5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.navLists{
+    display: flex;
+    gap: 5rem;
+    flex-grow: 1;
+
+}

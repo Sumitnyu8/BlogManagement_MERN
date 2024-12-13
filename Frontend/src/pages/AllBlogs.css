@@ -1,0 +1,42 @@
+.all-blogs {
+    max-width: 1440px;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .all-blogs h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-list {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items wrap to the next line if necessary */
+    gap: 1rem; /* Adds spacing between items */
+    margin-top: 3rem;
+  }
+  
+  .blog-list .blog-card {
+    width: calc(25% - 1rem);
+    box-sizing: border-box;
+  }
+
+  .linkBtn{
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 50%;
+    background-color: #007bff;
+    text-decoration: none;
+  }
+
+  .linkBtn:hover{
+    opacity: .9;
+  }
+  
+
+  
