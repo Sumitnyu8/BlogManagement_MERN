@@ -19,14 +19,23 @@ const BlogCard = ({ title, author, category, content, image, id, onDelete }) => 
         console.error('Error Deleting Blog',err);
       }
     }
+    };
+
+    const truncateContent = (text, limit) => {
+      const content = text.split(" ");
+      return content.length > limit
+      ? content.slice(0, limit).join(" ") + "..."
+      : text;
     }
   return (
     <>
       <div className="blog-card">
-        <h2>{title}</h2>
+        <h2>{truncateContent(title,3)}</h2>
+        <div className="card-content">
         <p className="author">By: {author}</p>
         <p className="category">Category: {category}</p>
-        <p className="content">{content}...</p>
+        <p className="content">{truncateContent(content,15)}...</p>
+        </div>
         <img src={image} alt={title} />
         <div className="card_btn">
           <Link to={`/edit/${id}`} className="edit-btn">

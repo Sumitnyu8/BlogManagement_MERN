@@ -3,9 +3,10 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
+  const name = sessionStorage.getItem('userName');
   return (
     <div className="Navbar">
-        <div className="profile">Profile</div>
+        <div className="profile">{"hii! "+name}</div>
         <ul className='navLists'>
             <li className="lists">
               <Link to='/allblogs'>

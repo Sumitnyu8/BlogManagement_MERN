@@ -27,6 +27,8 @@ function Login() {
         body:JSON.stringify(user)
       });
       if(response.ok){
+        const data = await response.json();
+        sessionStorage.setItem('userName', data.userName);
         navigate('/allblogs');
       }
     }catch(err){
