@@ -21,7 +21,6 @@ function EditBlog() {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
       const data = await response.json();
-      console.log(data);
       
       setFormData({
         title: data.title,

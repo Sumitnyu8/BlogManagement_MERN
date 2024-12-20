@@ -3,12 +3,14 @@ import "./AddBlogForm.css";
 import Navbar from "../components/Navbar";
 
 function AddBlog() {
+  const userEmail = sessionStorage.getItem('userEmail') || '';
   const [addFormData, setAddFormData] = useState({
     title: "",
     author: "",
     category: "",
     content: "",
     image: "",
+    email: userEmail
   });
 
   const handleChange = (e) => {
@@ -31,6 +33,8 @@ function AddBlog() {
       });
 
       if (response.ok) {
+        console.log(addFormData);
+        
         alert("Blog Added Successfully");
         setAddFormData({
           title: "",
@@ -38,6 +42,7 @@ function AddBlog() {
           category: "",
           content: "",
           image: "",
+          email: ""
         });
       }
     } catch (err) {

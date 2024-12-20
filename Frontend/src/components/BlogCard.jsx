@@ -11,7 +11,7 @@ const BlogCard = ({ title, author, category, content, image, id, onDelete }) => 
         });
         if(response.ok){
           alert("Blog deleted successfully!");
-          onDelete(id);
+          await onDelete(id);
         }else {
           alert("Failed to delete blog. Please try again.");
         };

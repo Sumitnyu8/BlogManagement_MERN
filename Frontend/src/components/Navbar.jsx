@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
   const name = sessionStorage.getItem('userName');
+  const email = sessionStorage.getItem('userEmail');
   return (
     <div className="Navbar">
         <div className="profile">{"hii! "+name}</div>
@@ -14,7 +15,7 @@ function Navbar() {
               </Link>
               </li>
             <li className="lists">
-              <Link to="/blog/:id">
+              <Link to={`/user/${email}`}>
                 Your Blogs
               </Link>
             </li>

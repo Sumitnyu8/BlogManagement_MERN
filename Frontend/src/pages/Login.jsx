@@ -18,23 +18,26 @@ function Login() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-      const response = await fetch('http://localhost:5000/login',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
+    try {
+      const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        body:JSON.stringify(user)
+        body: JSON.stringify(user),
       });
-      if(response.ok){
+      if (response.ok) {
         const data = await response.json();
-        sessionStorage.setItem('userName', data.userName);
-        navigate('/allblogs');
+        sessionStorage.setItem('userEmail', user.email); // Store email
+        sessionStorage.setItem('userName', data.userName); // Store userName
+        console.log(sessionStorage.getItem('userEmail')); // Debugging to check email
+        navigate('/allblogs'); // Navigate to blogs
       }
-    }catch(err){
-      console.error('Invalid Credentials',err);
+    } catch (err) {
+      console.error('Invalid Credentials', err);
     }
-  }
+  };
+  
 
   return (
     <div className="signin-container">

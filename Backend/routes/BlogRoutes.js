@@ -12,9 +12,9 @@ router.get('/', async (req,res)=>{
 });
 
 router.post('/addblog', async (req,res)=>{
-    const {title, content, author, image, category} = req.body;
+    const {title, content, author, image, category, email} = req.body;
     try{
-        const blog = new Blog({title, content, author, image, category});
+        const blog = new Blog({title, content, author, image, category, email});
         const savedBlog = await blog.save();
         res.status(200).json(savedBlog);
         console.log(savedBlog._id);
@@ -32,6 +32,19 @@ router.get("/:id", async (req, res) => {
         return res.status(404).json({ message: "Blog not found" });
       }
       res.json(blog);
+    } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
+
+router.get("/user/:email", async (req, res) => {
+    const { email } = req.params;
+    try {
+      const blog = await Blog.find({email});
+      if (blog.length === 0) {
+        return res.status(404).json({ message: "No blogs found for this email" });
+      }      
+      res.status(200).json(blog);
     } catch (error) {
       res.status(500).json({ error: "Internal Server Error" });
     }

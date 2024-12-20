@@ -29,7 +29,7 @@ const AllBlogs = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="all-blogs">
         <h1>All Blogs</h1>
         <div className="blog-list">

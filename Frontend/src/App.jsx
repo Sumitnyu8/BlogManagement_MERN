@@ -23,7 +23,7 @@ function App() {
 
             <Route path="/edit/:id" element={<EditBlog />} />
 
-            <Route path="/blog/:id" element={<SingleBlog />} />
+            <Route path="/user/:email" element={<SingleBlog />} />
 
             <Route path="/about" element={<About/>} />
           </Routes>
